@@ -1,313 +1,525 @@
-// !$*UTF8*$!
+// Kirubel Seyoum
+// ITP 165, Fall 2018
+// Homework 10
+// kseyoum@usc.edu
+//  main.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/7/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include <iostream>
+#include "Jail.h"
+using namespace std;
+int main(int argc, const char * argv[]) {
+    
+    //create an object for jail to use the run and standing functions
+    Jail *object=new Jail;
+    object-> run();
+    object-> standings();
+    //delete the object after it has been used to run through functions
+    delete object;
+    
+    
+    return 0;
+}
+
+
+//
+//  Player.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#ifndef Player_h
+#define Player_h
+#include <iostream>
+
+#include <stdio.h>
+using namespace std;
+
+const int rounds = 200;
+//creation of player class
+class Player
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 50;
-	objects = {
+protected:
+    char yourChoices[rounds];
+    int score;
+    string name;
+public:
+    //declare functions of class
+    //constructor
+    Player (string playerName);
+    virtual char play(int)=0;
+    void record (int, char);
+    void addToScore (int);
+    void report();
+    virtual ~Player();
+    
+};
+#endif /* Player_h */
 
-/* Begin PBXBuildFile section */
-		FA0437902193736C00253211 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04378F2193736C00253211 /* main.cpp */; };
-		FA0437FB21A3639100253211 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0437F921A3639100253211 /* Player.cpp */; };
-		FA04382821A3BC9800253211 /* Nice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04382621A3BC9800253211 /* Nice.cpp */; };
-		FA04382B21A3BCBE00253211 /* Mean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04382921A3BCBE00253211 /* Mean.cpp */; };
-		FA04382E21A3BD3C00253211 /* TFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04382C21A3BD3C00253211 /* TFT.cpp */; };
-		FA04383121A3BD5700253211 /* Kseyoum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04382F21A3BD5700253211 /* Kseyoum.cpp */; };
-		FA04383421A3BD7400253211 /* Jail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA04383221A3BD7400253211 /* Jail.cpp */; };
-/* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		FA04378A2193736C00253211 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
+//
+//  Player.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
 
-/* Begin PBXFileReference section */
-		FA04378C2193736C00253211 /* Homework 10 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Homework 10"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA04378F2193736C00253211 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		FA0437E421A2B39500253211 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		FA0437E721A3520700253211 /* Jail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Jail.h; sourceTree = "<group>"; };
-		FA0437EA21A3575A00253211 /* Nice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nice.h; sourceTree = "<group>"; };
-		FA0437ED21A3577600253211 /* Mean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mean.h; sourceTree = "<group>"; };
-		FA0437F021A3578900253211 /* TFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFT.h; sourceTree = "<group>"; };
-		FA0437F621A3595E00253211 /* Kseyoum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kseyoum.h; sourceTree = "<group>"; };
-		FA0437F921A3639100253211 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		FA04382621A3BC9800253211 /* Nice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Nice.cpp; sourceTree = "<group>"; };
-		FA04382921A3BCBE00253211 /* Mean.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mean.cpp; sourceTree = "<group>"; };
-		FA04382C21A3BD3C00253211 /* TFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TFT.cpp; sourceTree = "<group>"; };
-		FA04382F21A3BD5700253211 /* Kseyoum.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Kseyoum.cpp; sourceTree = "<group>"; };
-		FA04383221A3BD7400253211 /* Jail.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Jail.cpp; sourceTree = "<group>"; };
-/* End PBXFileReference section */
+#include "Player.h"
+using namespace std;
+//This function is a constructor
+//It is called player
+//It assigns a string to the name variable in the player class, Also initializes the score variable
+//Takes in a string variable
+Player:: Player (string playerName)
+{
+    name=playerName;
+    score=0;
+}
+// Function is a void
+// Function is called record
+// Function records whether the player played C or D
+// The function takes in the integer amount of rounds and the char played
+void Player:: record (int rounds, char corD)
+{
+    yourChoices[rounds]=corD;
+}
+//Function is a void
+//Function is called addToScore
+//The function adds the current round score of the player to their overall score
+//The function takes in the score that the user got that round and adds it to their overall score
+void Player:: addToScore (int roundScore)
+{
+    score+=roundScore;
+}
+void Player:: report()
+{
+    std::cout<< name << std::endl;
+    std::cout<< score << std::endl;
+}
+//Function is a virtual destructor
+//Function is called ~Player
+//The function destroys all the information previously stored into the class
+//The function doesn't take in anything
+Player::~Player()
+{
+    
+}
 
-/* Begin PBXFrameworksBuildPhase section */
-		FA0437892193736C00253211 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
-/* Begin PBXGroup section */
-		FA0437832193736C00253211 = {
-			isa = PBXGroup;
-			children = (
-				FA04378E2193736C00253211 /* Homework 10 */,
-				FA04378D2193736C00253211 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		FA04378D2193736C00253211 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FA04378C2193736C00253211 /* Homework 10 */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FA04378E2193736C00253211 /* Homework 10 */ = {
-			isa = PBXGroup;
-			children = (
-				FA04378F2193736C00253211 /* main.cpp */,
-				FA0437E421A2B39500253211 /* Player.h */,
-				FA0437F921A3639100253211 /* Player.cpp */,
-				FA0437EA21A3575A00253211 /* Nice.h */,
-				FA04382621A3BC9800253211 /* Nice.cpp */,
-				FA0437ED21A3577600253211 /* Mean.h */,
-				FA04382921A3BCBE00253211 /* Mean.cpp */,
-				FA0437F021A3578900253211 /* TFT.h */,
-				FA04382C21A3BD3C00253211 /* TFT.cpp */,
-				FA0437F621A3595E00253211 /* Kseyoum.h */,
-				FA04382F21A3BD5700253211 /* Kseyoum.cpp */,
-				FA0437E721A3520700253211 /* Jail.h */,
-				FA04383221A3BD7400253211 /* Jail.cpp */,
-			);
-			path = "Homework 10";
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
+//
+//  Nice.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
 
-/* Begin PBXNativeTarget section */
-		FA04378B2193736C00253211 /* Homework 10 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FA0437932193736C00253211 /* Build configuration list for PBXNativeTarget "Homework 10" */;
-			buildPhases = (
-				FA0437882193736C00253211 /* Sources */,
-				FA0437892193736C00253211 /* Frameworks */,
-				FA04378A2193736C00253211 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Homework 10";
-			productName = "Homework 10";
-			productReference = FA04378C2193736C00253211 /* Homework 10 */;
-			productType = "com.apple.product-type.tool";
-		};
-/* End PBXNativeTarget section */
+#ifndef Nice_h
+#define Nice_h
 
-/* Begin PBXProject section */
-		FA0437842193736C00253211 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Kirubel Seyoum";
-				TargetAttributes = {
-					FA04378B2193736C00253211 = {
-						CreatedOnToolsVersion = 9.4.1;
-					};
-				};
-			};
-			buildConfigurationList = FA0437872193736C00253211 /* Build configuration list for PBXProject "Homework 10" */;
-			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = FA0437832193736C00253211;
-			productRefGroup = FA04378D2193736C00253211 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				FA04378B2193736C00253211 /* Homework 10 */,
-			);
-		};
-/* End PBXProject section */
+#include <stdio.h>
+#include <iostream>
+#include "Player.h"
 
-/* Begin PBXSourcesBuildPhase section */
-		FA0437882193736C00253211 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA04382E21A3BD3C00253211 /* TFT.cpp in Sources */,
-				FA0437FB21A3639100253211 /* Player.cpp in Sources */,
-				FA04382B21A3BCBE00253211 /* Mean.cpp in Sources */,
-				FA04382821A3BC9800253211 /* Nice.cpp in Sources */,
-				FA0437902193736C00253211 /* main.cpp in Sources */,
-				FA04383421A3BD7400253211 /* Jail.cpp in Sources */,
-				FA04383121A3BD5700253211 /* Kseyoum.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
-/* Begin XCBuildConfiguration section */
-		FA0437912193736C00253211 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		FA0437922193736C00253211 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		FA0437942193736C00253211 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		FA0437952193736C00253211 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
+using namespace std;
 
-/* Begin XCConfigurationList section */
-		FA0437872193736C00253211 /* Build configuration list for PBXProject "Homework 10" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FA0437912193736C00253211 /* Debug */,
-				FA0437922193736C00253211 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FA0437932193736C00253211 /* Build configuration list for PBXNativeTarget "Homework 10" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FA0437942193736C00253211 /* Debug */,
-				FA0437952193736C00253211 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = FA0437842193736C00253211 /* Project object */;
+//creation of Nice class
+class Nice:public Player
+{
+protected:
+    char play(int currentRound);
+    
+//declare functions of class
+public:
+    Nice(string niceString);
+    
+};
+
+
+#endif /* Nice_h */
+
+
+//
+//  Nice.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include "Nice.h"
+#include <iostream>
+
+using namespace std;
+
+//This function is a constructor
+//This function sets the niceString as the class name
+//This function is called nice
+//This function takes in a string
+Nice::Nice(string niceString):Player(niceString)
+{
+    
+}
+
+//This function returns a char
+//This function is called Play
+//This function takes in the current round of the game
+//This function returns what the specific player plays on each round
+char Nice::play(int currentRound)
+{
+    return 'c';
+}
+
+
+//
+//  Mean.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#ifndef Mean_h
+#define Mean_h
+
+#include <stdio.h>
+#include <iostream>
+#include "Player.h"
+using namespace std;
+
+//Creation of mean class
+class Mean:public Player
+{
+protected:
+    char play(int currentRound);
+    
+//declare functions of class
+public:
+    Mean(string MeanString);
+    
+};
+
+#endif /* Mean_h */
+
+//
+//  Mean.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include "Mean.h"
+#include <iostream>
+using namespace std;
+//This function is a constructor
+//This function sets the MeanString as the class name
+//This function is called Mean
+//This function takes in a string
+Mean::Mean(string MeanString):Player(MeanString)
+{
+    
+}
+//This function returns a char
+//This function is called Play
+//This function takes in the current round of the game
+//This function returns what the specific player plays on each round
+char Mean::play(int currentRound)
+{
+    return 'd';
+}
+
+
+//
+//  TFT.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#ifndef TFT_h
+#define TFT_h
+
+#include <stdio.h>
+#include <iostream>
+#include "Player.h"
+using namespace std;
+
+//Creation of TFT class
+class TFT:public Player
+{
+protected:
+    char play(int currentRound);
+    
+    //declare functions of class
+public:
+    TFT(string tftString);
+    
+};
+
+#endif /* TFT_h */
+
+
+//
+//  TFT.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include "TFT.h"
+#include <iostream>
+using namespace std;
+
+//This function is a constructor
+//This function sets the tftString as the class name
+//This function is called TFT
+//This function takes in a string
+TFT::TFT(string tftString):Player(tftString)
+{
+    
+}
+//This function returns a char
+//This function is called Play
+//This function takes in the current round of the game
+//This function returns what the specific player plays on each round
+char TFT::play(int currentRound)
+{
+    if (currentRound==0)
+    {
+        return 'c';
+    }
+    else
+        return yourChoices[currentRound-1];
+}
+
+//
+//  Kseyoum.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#ifndef Kseyoum_h
+#define Kseyoum_h
+
+#include <stdio.h>
+#include "Player.h"
+using namespace std;
+//Creation of Kseyoum class
+class Kseyoum:public Player
+{
+protected:
+    char play(int currentRound);
+    
+public:
+    //declare functions of class
+    Kseyoum(string KseyoumString);
+    
+};
+
+#endif /* Kseyoum_h */
+
+
+//
+//  Kseyoum.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include "Kseyoum.h"
+using namespace std;
+
+//This function is a constructor
+//This function sets the KseyoumString as the class name
+//This function is called Kseyoum
+//This function takes in a string
+Kseyoum::Kseyoum(string KseyoumString):Player(KseyoumString)
+{
+    
+}
+//This function returns a char
+//This function is called Play
+//This function takes in the current round of the game
+//This function returns what the specific player plays on each round
+char Kseyoum::play(int currentRound)
+{
+    return 'd';
+}
+
+
+//
+//  Jail.h
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#ifndef Jail_h
+#define Jail_h
+
+#include <stdio.h>
+#include <iostream>
+#include "Player.h"
+using namespace std;
+//Creation of jail class
+class Jail
+{
+protected:
+    //Creation of players vector using Player
+    vector<Player*> *players;
+    int playerCount;
+public:
+    //functions declared 
+    Jail ();
+    int run();
+    int slap(char First,char Second);
+    int standings();
+    ~Jail();
+    
+};
+
+#endif /* Jail_h */
+
+
+// Kirubel Seyoum
+// ITP 165, Fall 2018
+// Homework 10
+// kseyoum@usc.edu
+//  Jail.cpp
+//  Homework 10
+//
+//  Created by Kirubel Seyoum on 11/19/18.
+//  Copyright © 2018 Kirubel Seyoum. All rights reserved.
+//
+
+#include "Jail.h"
+#include "Nice.h"
+#include "Mean.h"
+#include "TFT.h"
+#include "Kseyoum.h"
+#include <iostream>
+#include <vector>
+using namespace std;
+//This function is a constructor
+//The function is called Jail
+//The function initializes the vector and makes room for the players
+//The function doesn't take in anything
+Jail::Jail()
+{
+    players=new vector<Player*>;
+    players->push_back(new Nice("Nice1"));
+    players->push_back(new Nice("Nice2"));
+    players->push_back(new Mean("Mean1"));
+    players->push_back(new Mean("Mean2"));
+    players->push_back(new TFT("TFT1"));
+    players->push_back(new TFT("TFT2"));
+    players->push_back(new Kseyoum("Kseyoum1"));
+    players->push_back(new Kseyoum("Kseyoum2"));
+
+    
+}
+//This function runs the game for all 8 players
+//This function is called run
+//The function returns a score value
+//This function doesn't bring in anything
+int Jail:: run()
+{
+    
+    
+        for (int i=0;i<players->size();i++)
+        {
+            for (int j=0; j<players->size(); j++)
+            {
+                if (i!=j)
+                {
+                    
+                    for (int nowRound=0; nowRound<200; nowRound++)
+                    {
+                        char playerChar1 = (*players)[i]->play(nowRound);
+                        char playerChar2 = (*players)[j]->play(nowRound);
+                        int randomNum=rand() % 19;
+                        if (randomNum==20)
+                            {
+                                playerChar1='d';
+                            }
+                        if (randomNum==1)
+                            {
+                                playerChar2='d';
+                            }
+                        (*players)[i]->record(nowRound, playerChar2);
+                        (*players)[j]->record(nowRound, playerChar1);
+                        (*players)[i]->addToScore(slap(playerChar1,playerChar2));
+                        (*players)[j]->addToScore(slap(playerChar2,playerChar1));
+                    }
+                    
+                }
+            }
+        }
+    return 0;
+}
+
+//This function is called slap
+//Purpose is to return values for the player based off each scenario
+//This function takens in two chars
+//This function returns integer values
+int Jail:: slap(char First,char Second)
+{
+    if (First=='c'& Second== 'c')
+    {
+        return 2;
+    }
+    if (First=='c'& Second== 'd')
+    {
+        return 0;
+    }
+    if (First=='d'& Second=='c')
+    {
+        return 3;
+    }
+    if (First=='d'& Second== 'd')
+    {
+        return 1;
+    }
+return 0;
+}
+
+//The function is called standings
+//The function reports the scores of each player at the end of the game
+//The function returns 8 integer values
+//The function doesn't bring in anything
+int Jail:: standings()
+{
+    for (int i = 0; i<players->size(); i++)
+    {
+        (*players)[i]->report();
+    }
+    return 0;
+}
+//Function is a destructor
+//Function is called ~Jail
+//The function destroys all the information previously stored into the vector
+//The function doesn't take in anything
+Jail::~Jail()
+{
+    for (int i=0; i<players->size(); i++)
+    {
+        delete (*players)[i];
+    }
+    
+    delete players;
 }
